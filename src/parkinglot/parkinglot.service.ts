@@ -24,21 +24,21 @@ export class ParkinglotService {
       larges: largeSlotAmount
     } = slots
 
-    const smallSlots: Slot[] = Array(smallSlotAmount).fill(null).map((_, i) => {
+    const smallSlots: Slot[] = Array(smallSlotAmount).fill(null).map(() => {
       return {
         slotId: uuidv4(),
         isAvailable: true
       }
     })
 
-    const mediumSlots: Slot[] = Array(mediumSlotAmount).fill(null).map((_, i) => {
+    const mediumSlots: Slot[] = Array(mediumSlotAmount).fill(null).map(() => {
       return {
         slotId: uuidv4(),
         isAvailable: true
       }
     }) 
 
-    const largeSlots: Slot[] = Array(largeSlotAmount).fill(null).map((_, i) => {
+    const largeSlots: Slot[] = Array(largeSlotAmount).fill(null).map(() => {
       return {
         slotId: uuidv4(),
         isAvailable: true
