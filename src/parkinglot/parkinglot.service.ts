@@ -11,7 +11,7 @@ export class ParkinglotService {
       @InjectModel(Parkinglot.name) private readonly model: Model<ParkinglotDocument>
   ) {}
 
-  async createParkingLot(parkingLot): Promise<Parkinglot> {
+  async createParkingLot(parkingLot: CreateParkinglotDto): Promise<Parkinglot> {
     const {
       rank,
       name,
