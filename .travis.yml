@@ -1,0 +1,17 @@
+sudo: false
+
+language: node_js
+
+node_js:
+  - node
+
+branches:
+  only:
+    - master
+
+script:
+  - npm run lint
+  - npm test test:coveralls
+
+notifications:
+  email: false
