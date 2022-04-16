@@ -1,5 +1,5 @@
 import { CarSize } from '../../shared/car-size.type'
-import { CarSizeEnum } from 'src/shared/car-size.enum'
+import { CarSizeEnum } from '../../shared/car-size.enum'
 import { ApiProperty } from '@nestjs/swagger'
 import { IsEnum, IsNotEmpty, IsString } from 'class-validator'
 import { BadRequestException } from '@nestjs/common'
