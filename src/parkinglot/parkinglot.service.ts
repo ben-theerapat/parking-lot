@@ -66,9 +66,9 @@ export class ParkinglotService {
     const _parkingLotDetails = JSON.parse(JSON.stringify(parkingLotDetails))
 
     const parkingLotWithAvilableSlots = _parkingLotDetails.map((item) => {
-      const smalls = item.slots.smalls.filter(item => item.isAvailable)
-      const mediums = item.slots.smalls.filter(item => item.isAvailable)
-      const larges = item.slots.smalls.filter(item => item.isAvailable)
+      const smalls = item.slots?.smalls?.filter(item => item.isAvailable)
+      const mediums = item.slots?.mediums?.filter(item => item.isAvailable)
+      const larges = item.slots?.large?.filter(item => item.isAvailable)
       return {
         ...item,
         slots: {
