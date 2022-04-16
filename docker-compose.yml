@@ -1,0 +1,35 @@
+version: '3'
+services:
+  mongodb:
+    image : mongo:latest
+    container_name: mongodb
+    volumes:
+      - ./database:/data/db
+    ports:
+      - 27017:27017
+    networks:
+      - parkinglot-network
+    restart: always
+  app:
+    container_name: parkinglot_api
+    image: parkinglot-api:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    command: npm run start:prod
+    environment: 
+      MONGODB_URI: mongodb://mongodb:27017/parkinglot
+    ports:
+      - 3000:3000
+      - 9229:9229
+    networks:
+      - parkinglot-network
+    depends_on:
+      - mongodb
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    restart: unless-stopped
+networks:
+    parkinglot-network:
+      driver: bridge
