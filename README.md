@@ -1,1 +1,85 @@
-# parking-lot
+## Running the API
+### Development
+
+- Install [Node.js 15.12.0](https://nodejs.org/en/) 
+- Update the environment variables in .env file (you can see the example in `.env.example`) 
+- Run `npm install`
+- Run `npm run start:dev`
+
+### Production
+- Install [Docker](https://github.com/docker)
+- Install [Docker Compose](https://github.com/docker/compose)
+- Run `docker-compose up -d` 
+
+
+## Test Scripts
+
+Tests are written using [Jest](https://jestjs.io/) and can be run using
+```
+# unit tests
+$ npm run test
+
+# e2e tests
+$ npm run test:e2e
+
+# test coverage
+$ npm run test:cov
+```
+
+*for production you have to run `docker exec -it parkinglot_api sh` before running test scripts*
+
+## Document APIs
+- [x]  `Swagger`: Once the application is running you can visit [http://localhost:3000/api](http://localhost:3000/api) to see the Swagger interface.
+
+
+## MongoDB Databases
+```
+ - parkingLots
+        - _id
+        - rank
+        - name
+        - smallSlots
+        - mediumSlots
+        - largeSlots
+        - createdAt
+ - tickets
+        - _id
+        - parkingLotId
+        - slotId
+        - plateNumber
+        - carSize
+        - exitAt
+        - createdAt
+```
+## API Endpoints
+
+- POST `/parkinglot` 
+to create parking lot
+- POST `/car/park` 
+ to park a car in a parking lot
+
+-  POST `/car/exit`
+to check out a parking
+
+-  GET `/car/status`
+to get available slots of all parking slots
+
+-  GET `/ticket?vehicleSize=large`
+to get ticket
+
+
+## TODOs
+- [x] E2E test
+- [x] Unit test
+- [ ] [JWT](https://jwt.io/introduction) for Authentication
+- [ ] Example for client use
+- [ ] Dockerfile for development
+
+
+  
+
+## Reference
+
+- [The official Nestjs documentation](https://docs.nestjs.com/first-steps)
+
+- [Unit testing NestJS applications with Jest](https://www.youtube.com/watch?v=1Vc6Xw8FMpg&list=LL&index=2&t=1374s)
