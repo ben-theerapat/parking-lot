@@ -1,14 +1,14 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose from 'mongoose';
 import { Document } from 'mongoose';
-import { CarSize } from '../../shared/car-size.type'
+import { CarSize } from '../../shared/car-size.type';
 
-export type TicketDocument = Ticket & Document
+export type TicketDocument = Ticket & Document;
 
 @Schema()
 export class Ticket {
   @Prop()
-  parkingLotId: mongoose.Schema.Types.ObjectId
+  parkingLotId: mongoose.Schema.Types.ObjectId;
 
   @Prop({ required: true })
   slotId: string;
@@ -20,7 +20,7 @@ export class Ticket {
   carSize: CarSize;
 
   @Prop()
-  exitAt: Date
+  exitAt: Date;
 }
 
-export const TicketSchema = SchemaFactory.createForClass(Ticket)
+export const TicketSchema = SchemaFactory.createForClass(Ticket);

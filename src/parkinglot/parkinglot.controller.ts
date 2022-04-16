@@ -1,7 +1,7 @@
-import { Body, Controller, Get, HttpCode, Post } from '@nestjs/common'
-import { ParkinglotService } from './parkinglot.service'
-import { CreateParkinglotDto } from './dto/parkinglot.dto'
-import { Parkinglot } from './shemas/parkinglot.schema'
+import { Body, Controller, Get, HttpCode, Post } from '@nestjs/common';
+import { ParkinglotService } from './parkinglot.service';
+import { CreateParkinglotDto } from './dto/parkinglot.dto';
+import { Parkinglot } from './shemas/parkinglot.schema';
 
 @Controller('parkinglot')
 export class ParkinglotController {
@@ -9,12 +9,14 @@ export class ParkinglotController {
 
   @Post('create')
   @HttpCode(201)
-  async createParkingLot(@Body() parkingLot: CreateParkinglotDto): Promise<Parkinglot> {
-    return await this.parkinglotService.createParkingLot(parkingLot)
+  async createParkingLot(
+    @Body() parkingLot: CreateParkinglotDto,
+  ): Promise<Parkinglot> {
+    return await this.parkinglotService.createParkingLot(parkingLot);
   }
 
   @Get('status')
-    async getStatus (): Promise<Parkinglot[]> {
-      return await this.parkinglotService.getStatus()
-    }
+  async getStatus(): Promise<Parkinglot[]> {
+    return await this.parkinglotService.getStatus();
+  }
 }

@@ -1,32 +1,33 @@
-import { Test, TestingModule } from '@nestjs/testing'
-import { CreateParkinglotDto } from '../dto/parkinglot.dto'
-import { ParkinglotController } from '../parkinglot.controller'
-import { ParkinglotService } from '../parkinglot.service'
-import { Parkinglot } from '../shemas/parkinglot.schema'
-import { createParkinglotStub, parkinglotStub } from './stubs/parkinglot.stub'
+import { Test, TestingModule } from '@nestjs/testing';
+import { CreateParkinglotDto } from '../dto/parkinglot.dto';
+import { ParkinglotController } from '../parkinglot.controller';
+import { ParkinglotService } from '../parkinglot.service';
+import { Parkinglot } from '../shemas/parkinglot.schema';
+import { createParkinglotStub, parkinglotStub } from './stubs/parkinglot.stub';
 
-jest.mock('../parkinglot.service')
+jest.mock('../parkinglot.service');
 
 describe('ParkinglotController', () => {
-  let parkinglotController: ParkinglotController
-  let parkinglotService: ParkinglotService
+  let parkinglotController: ParkinglotController;
+  let parkinglotService: ParkinglotService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [ParkinglotController],
-      providers: [ParkinglotService]
-    }).compile()
+      providers: [ParkinglotService],
+    }).compile();
 
-    parkinglotController = module.get<ParkinglotController>(ParkinglotController)
-    parkinglotService = module.get<ParkinglotService>(ParkinglotService)
-    jest.clearAllMocks()
-  })
+    parkinglotController =
+      module.get<ParkinglotController>(ParkinglotController);
+    parkinglotService = module.get<ParkinglotService>(ParkinglotService);
+    jest.clearAllMocks();
+  });
 
   describe('createParkinglot', () => {
     describe('when createParkinglot is called', () => {
-      let parkingLot: Parkinglot
-      let createparkinglot: CreateParkinglotDto
-      
+      let parkingLot: Parkinglot;
+      let createparkinglot: CreateParkinglotDto;
+
       beforeEach(async () => {
         createparkinglot = {
           name: createParkinglotStub().name,
@@ -35,18 +36,20 @@ describe('ParkinglotController', () => {
             smalls: createParkinglotStub().slots.smalls,
             mediums: createParkinglotStub().slots.mediums,
             larges: createParkinglotStub().slots.larges,
-          }
-        }
-        parkingLot = await parkinglotController.createParkingLot(createparkinglot)
-      })
+          },
+        };
+        parkingLot = await parkinglotController.createParkingLot(
+          createparkinglot,
+        );
+      });
 
       test('then it should call parkinglotService.createParkingLot', () => {
-        expect(parkinglotService.createParkingLot).toHaveBeenCalled()
-      })
+        expect(parkinglotService.createParkingLot).toHaveBeenCalled();
+      });
 
       test('then it should return parking detail', () => {
-        expect(parkingLot).toEqual(parkinglotStub())
-      })
-    })
-  })
-})
+        expect(parkingLot).toEqual(parkinglotStub());
+      });
+    });
+  });
+});

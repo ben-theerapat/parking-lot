@@ -1,9 +1,9 @@
-import { Module } from '@nestjs/common'
-import { ConfigModule } from '@nestjs/config'
-import { MongooseModule } from '@nestjs/mongoose'
-import { CarModule } from './car/car.module'
-import { ParkinglotModule } from './parkinglot/parkinglot.module'
-import { TicketModule } from './ticket/ticket.module'
+import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
+import { MongooseModule } from '@nestjs/mongoose';
+import { CarModule } from './car/car.module';
+import { ParkinglotModule } from './parkinglot/parkinglot.module';
+import { TicketModule } from './ticket/ticket.module';
 
 @Module({
   imports: [
@@ -14,5 +14,4 @@ import { TicketModule } from './ticket/ticket.module'
     CarModule,
   ],
 })
-
 export class AppModule {}

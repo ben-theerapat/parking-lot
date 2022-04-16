@@ -1,5 +1,5 @@
-import { ticketStub } from '../test/stubs/ticket.stub'
+import { ticketStub } from '../test/stubs/ticket.stub';
 
 export const TicketService = jest.fn().mockReturnValue({
-  getTicketStatus: jest.fn().mockResolvedValue([ticketStub()])
-})
+  getTicketStatus: jest.fn().mockResolvedValue([ticketStub()]),
+});

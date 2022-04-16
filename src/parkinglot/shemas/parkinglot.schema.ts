@@ -1,40 +1,40 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
-import mongoose from 'mongoose'
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import mongoose from 'mongoose';
 
-export type ParkinglotDocument = Parkinglot & mongoose.Document
+export type ParkinglotDocument = Parkinglot & mongoose.Document;
 
 class Slot {
   @Prop({ required: true })
-  slotId: string
+  slotId: string;
 
   @Prop({ default: true })
-  isAvilable: boolean
+  isAvilable: boolean;
 }
 
 @Schema()
 class SlotType {
   @Prop({ required: true })
-  smalls: Slot[]
+  smalls: Slot[];
 
   @Prop({ required: true })
-  mediums: Slot[]
+  mediums: Slot[];
 
   @Prop({ required: true })
-  larges: Slot[]
+  larges: Slot[];
 }
 
 @Schema()
 export class Parkinglot {
-  _id?: mongoose.Schema.Types.ObjectId
+  _id?: mongoose.Schema.Types.ObjectId;
 
   @Prop({ required: true })
-  rank: number
+  rank: number;
 
   @Prop({ required: true })
-  name: string
+  name: string;
 
   @Prop({ required: true })
-  slots: SlotType
+  slots: SlotType;
 }
 
-export const ParkinglotSchema = SchemaFactory.createForClass(Parkinglot)
+export const ParkinglotSchema = SchemaFactory.createForClass(Parkinglot);

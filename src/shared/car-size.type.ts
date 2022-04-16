@@ -1,1 +1,1 @@
-export type CarSize = | 'small' | 'medium' | 'large'
+export type CarSize = 'small' | 'medium' | 'large';

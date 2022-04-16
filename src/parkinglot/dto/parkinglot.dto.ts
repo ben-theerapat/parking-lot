@@ -1,53 +1,58 @@
-import mongoose from 'mongoose'
-import { ApiProperty } from '@nestjs/swagger'
-import { IsNumber, IsString, IsNotEmpty, ValidateNested } from 'class-validator'
-import { Type } from 'class-transformer'
+import mongoose from 'mongoose';
+import { ApiProperty } from '@nestjs/swagger';
+import {
+  IsNumber,
+  IsString,
+  IsNotEmpty,
+  ValidateNested,
+} from 'class-validator';
+import { Type } from 'class-transformer';
 export interface Slot {
-  slotId: string,
-  isAvailable: boolean
+  slotId: string;
+  isAvailable: boolean;
 }
 
 export class ParkinglotDto {
-  _id?: mongoose.Schema.Types.ObjectId
-  rank: number
-  name: string
+  _id?: mongoose.Schema.Types.ObjectId;
+  rank: number;
+  name: string;
   slots: {
-    smalls: Slot[]
-    mediums: Slot[]
-    larges: Slot[] 
-  }
+    smalls: Slot[];
+    mediums: Slot[];
+    larges: Slot[];
+  };
 }
 
 class SlotDto {
   @IsNotEmpty()
   @IsNumber()
   @ApiProperty({ default: 1 })
-  smalls: number
+  smalls: number;
 
   @IsNotEmpty()
   @IsNumber()
   @ApiProperty({ default: 2 })
-  mediums: number
+  mediums: number;
 
   @IsNotEmpty()
   @IsNumber()
   @ApiProperty({ default: 3 })
-  larges: number
+  larges: number;
 }
 
 export class CreateParkinglotDto {
   @IsNotEmpty()
   @IsString()
   @ApiProperty({ default: 'parkinglot_02' })
-  name: string
+  name: string;
 
   @IsNotEmpty()
   @IsNumber()
   @ApiProperty({ default: 2 })
-  rank: number
-  
+  rank: number;
+
   @ValidateNested()
   @Type(() => SlotDto)
   @ApiProperty()
-  slots!: SlotDto
+  slots!: SlotDto;
 }
