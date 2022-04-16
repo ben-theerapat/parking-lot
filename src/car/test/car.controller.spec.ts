@@ -1,5 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing'
 import { Ticket } from 'src/ticket/schemas/ticket.schema'
+import { ticketStub } from '../../ticket/test/stubs/ticket.stub'
 import { CarController } from '../car.controller'
 import { CarService } from '../car.service'
 import { CarParkDto } from '../dto/car.dto'
@@ -37,6 +38,10 @@ describe('CarController', () => {
 
       test('then it should call park service', () => {
         expect(carService.park).toHaveBeenCalled()
+      })
+
+      test('then it should return ticket detail', () => {
+        expect(ticket).toEqual(ticketStub())
       })
     })
   })
