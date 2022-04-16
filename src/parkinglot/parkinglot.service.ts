@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common'
 import { InjectModel } from '@nestjs/mongoose'
 import { Parkinglot, ParkinglotDocument } from './shemas/parkinglot.schema'
 import { Model } from 'mongoose'
-import { ParkinglotDto, Slot } from './dto/parkinglot.dto'
+import { CreateParkinglotDto, ParkinglotDto, Slot } from './dto/parkinglot.dto'
 import { v4 as uuidv4 } from 'uuid'
 
 @Injectable()
@@ -59,5 +59,25 @@ export class ParkinglotService {
     }).save()
 
     return result
+  }
+
+  async getStatus(): Promise<Parkinglot[]> {
+    const parkingLotDetails: Parkinglot[] = await this.model.find({})
+    const _parkingLotDetails = JSON.parse(JSON.stringify(parkingLotDetails))
+
+    const parkingLotWithAvilableSlots = _parkingLotDetails.map((item) => {
+      const smalls = item.slots.smalls.filter(item => item.isAvailable)
+      const mediums = item.slots.smalls.filter(item => item.isAvailable)
+      const larges = item.slots.smalls.filter(item => item.isAvailable)
+      return {
+        ...item,
+        slots: {
+          smalls,
+          mediums,
+          larges,
+        }
+      }
+    })
+    return parkingLotWithAvilableSlots
   }
 }
