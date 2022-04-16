@@ -1,11 +1,12 @@
-import { BadRequestException, Injectable } from '@nestjs/common'
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common'
 import { InjectModel } from '@nestjs/mongoose'
 import { Model } from 'mongoose'
 import { TicketDocument, Ticket } from '../ticket/schemas/ticket.schema'
 import { ParkinglotDocument, Parkinglot } from '../parkinglot/shemas/parkinglot.schema'
-import { CarParkDto } from './dto/car.dto'
+import { CarExitDto, CarParkDto } from './dto/car.dto'
 import { ParkinglotDto } from 'src/parkinglot/dto/parkinglot.dto'
 import { TicketDto } from 'src/ticket/dto/ticket.dto'
+import mongoose from 'mongoose'
 
 @Injectable()
 export class CarService {
@@ -48,5 +49,28 @@ export class CarService {
     return await this.ticketModel.create({
         ...ticket,
     })
+  }
+
+  async exit (carExit: CarExitDto): Promise<Ticket> {
+    const { ticketId } = carExit
+    const _id = new mongoose.Types.ObjectId(String(ticketId));
+    const updated = await this.ticketModel.findOneAndUpdate({ _id }, { exitAt: new Date() })
+    if (!updated) throw new NotFoundException('ticket not found')
+    const { parkingLotId, carSize, slotId } = updated
+    const parkingLotDetail: Parkinglot = await this.parkinglotModel.findOne({ '_id': parkingLotId })
+    const slotKey = `${carSize}s`
+
+    const slotIndex = parkingLotDetail.slots[slotKey].findIndex(s => s.slotId === slotId)
+    let newParkingLotDetail: Parkinglot = JSON.parse(JSON.stringify(parkingLotDetail))
+    newParkingLotDetail.slots[slotKey][slotIndex].isAvailable = true
+
+    const findCondition = {
+      _id: parkingLotId
+    }
+    await this.parkinglotModel.findOneAndUpdate(findCondition, newParkingLotDetail)
+
+    // for check exitAt propertie for e2e testing
+    const result = await this.ticketModel.findOne({ _id: ticketId })
+    return result
   }
 }
