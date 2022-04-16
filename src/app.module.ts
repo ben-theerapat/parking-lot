@@ -1,8 +1,9 @@
-import { Module } from '@nestjs/common';
+import { Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
-import { MongooseModule } from '@nestjs/mongoose';
-import { ParkinglotModule } from './parkinglot/parkinglot.module';
-import { TicketModule } from './ticket/ticket.module';
+import { MongooseModule } from '@nestjs/mongoose'
+import { CarModule } from './car/car.module'
+import { ParkinglotModule } from './parkinglot/parkinglot.module'
+import { TicketModule } from './ticket/ticket.module'
 
 @Module({
   imports: [
@@ -10,6 +11,7 @@ import { TicketModule } from './ticket/ticket.module';
     MongooseModule.forRoot(process.env.MONGODB_URI),
     ParkinglotModule,
     TicketModule,
+    CarModule,
   ],
 })
 
