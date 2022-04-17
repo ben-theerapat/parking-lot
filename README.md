@@ -2,6 +2,7 @@
 
 [![Build Status](https://app.travis-ci.com/OoI3enZaoo/parking-lot.svg?branch=master)](https://app.travis-ci.com/OoI3enZaoo/parking-lot)
 [![Coverage Status](https://coveralls.io/repos/github/OoI3enZaoo/parking-lot/badge.svg?branch=master)](https://coveralls.io/github/OoI3enZaoo/parking-lot?branch=master)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FOoI3enZaoo%2Fparking-lot.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FOoI3enZaoo%2Fparking-lot?ref=badge_shield)
 
 # Assumption
 ```
@@ -111,3 +112,7 @@ to get ticket
 - [The official Nestjs documentation](https://docs.nestjs.com/first-steps)
 
 - [Testing](https://docs.nestjs.com/fundamentals/testing)
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FOoI3enZaoo%2Fparking-lot.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FOoI3enZaoo%2Fparking-lot?ref=badge_large)
