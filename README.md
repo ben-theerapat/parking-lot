@@ -49,6 +49,7 @@ $ npm run test:cov
 ```
 ## Document APIs
 - [x]  `Swagger`: Once the application is running you can visit [http://localhost:3000/api](http://localhost:3000/api) to see the Swagger interface.
+- [x] `Postman`: https://documenter.getpostman.com/view/1178609/Uyr5oK1W
 
 
 ## MongoDB Databases
