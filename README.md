@@ -49,8 +49,8 @@ $ npm run test:cov
 *for production you have to run `docker exec -it parkinglot_api sh` before running test scripts*
 
 ## Document APIs
-- [x]  `Swagger`: Once the application is running you can visit [http://localhost:3000/api](http://localhost:3000/api) to see the Swagger interface.
-- [x] `Postman`: https://documenter.getpostman.com/view/1178609/Uyr5oK1W
+- `Swagger`: Once the application is running you can visit [http://localhost:3000/api](http://localhost:3000/api) to see the Swagger interface.
+- `Postman`: https://documenter.getpostman.com/view/1178609/Uyr5oK1W
 
 
 ## MongoDB Databases
@@ -59,9 +59,16 @@ $ npm run test:cov
         - _id
         - rank
         - name
-        - smallSlots
-        - mediumSlots
-        - largeSlots
+        - slots
+          - smalls
+            - slotId
+            - isAvailable
+          - mediums
+            - slotId
+            - isAvailable
+          - larges
+            - slotId
+            - isAvailable
         - createdAt
  - tickets
         - _id
