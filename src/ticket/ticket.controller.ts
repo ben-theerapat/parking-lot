@@ -11,6 +11,7 @@ export class TicketController {
   async getTicketStatus(
     @Query('carSize') carSize?: CarSize,
   ): Promise<Ticket[]> {
-    return await this.ticketService.getTicketStatus({ carSize });
+    const result = await this.ticketService.getTicketStatus(carSize);
+    return result;
   }
 }

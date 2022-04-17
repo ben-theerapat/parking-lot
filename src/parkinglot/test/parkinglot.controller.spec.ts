@@ -23,6 +23,10 @@ describe('ParkinglotController', () => {
     jest.clearAllMocks();
   });
 
+  it('should be defined', () => {
+    expect(parkinglotController).toBeDefined();
+  });
+
   describe('createParkinglot', () => {
     describe('when createParkinglot is called', () => {
       let parkingLot: Parkinglot;

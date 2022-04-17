@@ -57,21 +57,20 @@ export class ParkinglotService {
         larges: largeSlots,
       },
     };
-    const result = await new this.model({
-      ...parkinglotDetail,
-    }).save();
 
-    return result;
+    const created = await this.model.create(parkinglotDetail);
+    const parkinglot = await this.model.findOne({ _id: created._id }).exec();
+    return parkinglot;
   }
 
   async getStatus(): Promise<Parkinglot[]> {
-    const parkingLotDetails: Parkinglot[] = await this.model.find({});
+    const parkingLotDetails: Parkinglot[] = await this.model.find({}).exec();
     const _parkingLotDetails = JSON.parse(JSON.stringify(parkingLotDetails));
 
     const parkingLotWithAvilableSlots = _parkingLotDetails.map((item) => {
       const smalls = item.slots?.smalls?.filter((item) => item.isAvailable);
       const mediums = item.slots?.mediums?.filter((item) => item.isAvailable);
-      const larges = item.slots?.large?.filter((item) => item.isAvailable);
+      const larges = item.slots?.larges?.filter((item) => item.isAvailable);
       return {
         ...item,
         slots: {

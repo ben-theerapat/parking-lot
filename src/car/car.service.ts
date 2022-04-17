@@ -26,7 +26,7 @@ export class CarService {
 
   async park(carPark: CarParkDto): Promise<Ticket> {
     const { plateNumber, carSize } = carPark;
-    const parkingLots = await this.parkinglotModel.find({});
+    const parkingLots = await this.parkinglotModel.find({}).exec();
     const slotKey = `${carSize}s`;
 
     let ticket: TicketDto;
@@ -58,24 +58,28 @@ export class CarService {
     const findCondition = {
       _id: newParkingLot._id,
     };
-    await this.parkinglotModel.findOneAndUpdate(findCondition, newParkingLot);
-    return await this.ticketModel.create({
-      ...ticket,
-    });
+    await this.parkinglotModel
+      .findOneAndUpdate(findCondition, newParkingLot)
+      .exec();
+    const created = await this.ticketModel.create(ticket);
+
+    const result = await this.ticketModel.findOne({ _id: created._id }).exec();
+    return result;
   }
 
   async exit(carExit: CarExitDto): Promise<Ticket> {
     const { ticketId } = carExit;
     const _id = new mongoose.Types.ObjectId(String(ticketId));
-    const updated = await this.ticketModel.findOneAndUpdate(
-      { _id },
-      { exitAt: new Date() },
-    );
+    const updated = await this.ticketModel
+      .findOneAndUpdate({ _id }, { exitAt: new Date() })
+      .exec();
     if (!updated) throw new NotFoundException('ticket not found');
     const { parkingLotId, carSize, slotId } = updated;
-    const parkingLotDetail: Parkinglot = await this.parkinglotModel.findOne({
-      _id: parkingLotId,
-    });
+    const parkingLotDetail: Parkinglot = await this.parkinglotModel
+      .findOne({
+        _id: parkingLotId,
+      })
+      .exec();
     const slotKey = `${carSize}s`;
 
     const slotIndex = parkingLotDetail.slots[slotKey].findIndex(
@@ -94,8 +98,7 @@ export class CarService {
       newParkingLotDetail,
     );
 
-    // for check exitAt propertie for e2e testing
-    const result = await this.ticketModel.findOne({ _id: ticketId });
+    const result = await this.ticketModel.findOne({ _id: ticketId }).exec();
     return result;
   }
 }

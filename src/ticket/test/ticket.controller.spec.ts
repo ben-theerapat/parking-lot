@@ -21,6 +21,10 @@ describe('TicketController', () => {
     jest.clearAllMocks();
   });
 
+  it('should be defined', () => {
+    expect(ticketController).toBeDefined();
+  });
+
   describe('getTicketStatus with query', () => {
     describe('when getTicketStatus with query is called', () => {
       let tickets: Ticket[];

@@ -23,6 +23,10 @@ describe('CarController', () => {
     jest.clearAllMocks();
   });
 
+  it('should be defined', () => {
+    expect(carController).toBeDefined();
+  });
+
   describe('park', () => {
     describe('when park is called', () => {
       let ticket: Ticket;
