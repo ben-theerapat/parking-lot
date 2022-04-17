@@ -42,7 +42,6 @@ describe('ParkinglotService', () => {
     } as any);
 
     const parkinglot = await service.createParkingLot(createParkinglotStub());
-    console.log('parkinglot', parkinglot);
     expect(parkinglot).toEqual(parkinglotStub());
   });
 
