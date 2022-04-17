@@ -2,6 +2,7 @@
 
 [![Build Status](https://app.travis-ci.com/OoI3enZaoo/parking-lot.svg?branch=master)](https://app.travis-ci.com/OoI3enZaoo/parking-lot)
 [![Coverage Status](https://coveralls.io/repos/github/OoI3enZaoo/parking-lot/badge.svg?branch=master)](https://coveralls.io/github/OoI3enZaoo/parking-lot?branch=master)
+[![e2e](https://github.com/OoI3enZaoo/parkinglot-temp/actions/workflows/e2e.yml/badge.svg)](https://github.com/OoI3enZaoo/parkinglot-temp/actions/workflows/e2e.yml)
 
 # Assumption
 ```
