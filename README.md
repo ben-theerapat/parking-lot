@@ -1,6 +1,7 @@
 # Parking lot
 
 [![Build Status](https://app.travis-ci.com/OoI3enZaoo/parking-lot.svg?branch=master)](https://app.travis-ci.com/OoI3enZaoo/parking-lot)
+[![Coverage Status](https://coveralls.io/repos/github/OoI3enZaoo/parking-lot/badge.svg?branch=master)](https://coveralls.io/github/OoI3enZaoo/parking-lot?branch=master)
 
 ## Running the API
 ### Development
