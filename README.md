@@ -10,7 +10,7 @@
   - can create unlimited parking lots.
   - can set the number of slots in each parking lot.
 - car
-  - the car  must park at the same slot size only.
+  - the car must park at the same slot size only.
 - size:
   - slots sizes: small, medium, large.
   - car sizes: small, medium, large.
