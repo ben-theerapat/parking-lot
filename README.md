@@ -5,7 +5,6 @@
 [![e2e](https://github.com/OoI3enZaoo/parking-lot/workflows/e2e/badge.svg)](https://github.com/OoI3enZaoo/parking-lot/actions/workflows/e2e.yml)
 
 ## Assumption
-```
 - Scenario: free parking lot without human intervention.
 - parking lot:
   - can create unlimited parking lots.
@@ -17,7 +16,6 @@
   - car sizes: small, medium, large.
 - pricing: free.
 
-```
 
 ## Running the API
 ### Development
