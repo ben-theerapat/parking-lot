@@ -103,4 +103,4 @@ to get ticket
 
 - [The official Nestjs documentation](https://docs.nestjs.com/first-steps)
 
-- [Unit testing NestJS applications with Jest](https://www.youtube.com/watch?v=1Vc6Xw8FMpg&list=LL&index=2&t=1374s)
+- [Testing](https://docs.nestjs.com/fundamentals/testing)
