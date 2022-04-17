@@ -33,6 +33,20 @@ $ npm run test:cov
 
 *for production you have to run `docker exec -it parkinglot_api sh` before running test scripts*
 
+# Assumption
+```
+- Scenario: free parking lot without human intervention.
+- parking lot:
+  - can create unlimited parking lots.
+  - can set the number of slots in each parking lot.
+- car
+  - the car  must park at the same slot size only.
+- size:
+  - slots sizes: small, medium, large.
+  - car sizes: small, medium, large.
+- pricing: free.
+
+```
 ## Document APIs
 - [x]  `Swagger`: Once the application is running you can visit [http://localhost:3000/api](http://localhost:3000/api) to see the Swagger interface.
 
